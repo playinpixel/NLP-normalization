@@ -1,0 +1,54 @@
+text = "The quick BROWN Fox Jumps OVER the lazy dog."
+text = text.lower()
+print(text)
+
+import string
+text = "The quick BROWN Fox Jumps OVER the lazy dog!!!"
+text = text.translate(text.maketrans("", "", string.punctuation))
+print(text)
+
+from nltk.corpus import stopwords
+text = "The quick BROWN Fox Jumps OVER the lazy dog."
+stop_words = set(stopwords.words("english"))
+words = text.split()
+filtered_words = [word for word in words if word not in stop_words]
+text = " ".join(filtered_words) 
+print(text)
+
+from nltk.stem import PorterStemmer
+stemmer = PorterStemmer()
+text = "running,runs,ran"
+words = text.split(",")
+stemmed_words = [stemmer.stem(word) for word in words]
+text = ",".join(stemmed_words)
+print(text)
+
+from nltk.tokenize import word_tokenize
+text = "The quick BROWN Fox Jumps OVER the lazy dog."
+tokens = word_tokenize(text)
+print(tokens)
+
+text = "I'll be there at 2pm"
+synonyms = {"I'll": "I will", "2pm": "2 pm"}
+for key, value in synonyms.items():
+    text = text.replace(key, value)
+print(text)
+
+import re
+text = "I have 2 apples and 1 orange #fruits"
+text = re.sub(r"[\d#]", "", text)
+print(text)
+
+import re
+text = "Please visit <a href='www.example.com'>example.com</a> for more information or contact me at info@example.com"
+text = re.sub(r"(<[^>]+>)|(http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)", "", text)
+print(text)
+
+import sys
+print(sys.version)
+
+!pip3 install torch==1.2.0+cu92 torchvision==0.4.0+cu92 -f https://download.pytorch.org/whl/torch_stable.html
+
+!pip install inltk
+
+from inltk.inltk import setup
